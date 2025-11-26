@@ -15,7 +15,7 @@
                     {
                         MTransNo = B.MTransNo,
                         UserType = B.UserType,
-                        MsgCount = (from M in conn.EMSMsgs where M.Sender == B.MTransNo && M.MsgStatus == "UNRead" select M.MTransNo).Count(),
+                        MsgCount = (from M in conn.EMSMsgs where M.Sender == B.MTransNo && M.MsgStatus == "Read" select M.MTransNo).Count(),
                         UserId = B.UserId
                     }).OrderByDescending(x => x.MsgCount).ThenBy(x => x.UserId).ToList();
 
@@ -294,7 +294,7 @@
                                             <th>OA Date</th>
                                             <th>WO Release Date</th>
                                             <th>WO Due Date</th>
-                                            <th>Delay Days</th>
+                                            <th>Delay Days(int)</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tableCont">
